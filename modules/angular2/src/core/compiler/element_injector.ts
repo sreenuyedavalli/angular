@@ -1164,7 +1164,7 @@ export class QueryRef {
   }
 
   visit(inj: ElementInjector, aggregator: any[]): void {
-    if (isBlank(inj) || !inj._hasQuery(this)) return;
+    if (isBlank(inj) || !inj._hasQuery(this) || !inj.hydrated) return;
 
     if (this.query.isVarBindingQuery) {
       this._aggregateVariableBindings(inj, aggregator);
